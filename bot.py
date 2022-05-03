@@ -3,7 +3,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from trading.processes import Bot
-from trading.func_brokers import historic_download, mev_download
+from trading.func_brokers import historic_download, mev_download, gt_download
 from datetime import date
 import argparse
 import time
@@ -15,7 +15,7 @@ from trading.metaheuristics.ta_tunning import TATunningProblem
 from functions import *
 
 
-GEN = 30
+GEN = 35
 
 class GTTATunning(TATunningProblem):
 
@@ -97,7 +97,6 @@ def func(inst):
 
     return pred
 
-
 def bot(args):
 
     b = Bot(
@@ -144,8 +143,9 @@ if __name__ == "__main__":
     parser.add_argument("-target", dest="target", help = "Optimization target", nargs='?', const="mincdar", type=str)
     parser.add_argument("-time", "-t", dest="time", help = "Time to consider for optimization", nargs='?', const=12, type=int)
     parser.add_argument("-return-target", "-rt", dest="return_target", help = "Return target if target is efficientreturn", nargs='?', const=0.02, type=float)
-    parser.add_argument( "--mev-download", "-md", dest = "md", action = "store_true", help = "Not Update MEVs DB" )
-    parser.add_argument( "--stock-download", "-sd", dest = "sd", action = "store_true", help = "Not Update Stocks DB" )
+    parser.add_argument( "--mev-download", "-m", dest = "md", action = "store_true", help = "Not Update MEVs DB" )
+    parser.add_argument( "--stock-download", "-s", dest = "sd", action = "store_true", help = "Not Update Stocks DB" )
+    parser.add_argument( "--gt-download", "-g", dest = "gtd", action = "store_true", help = "Not Update Google Trends DB" )
 
     args = parser.parse_args()
 
@@ -174,6 +174,14 @@ if __name__ == "__main__":
             verbose=False
         )
 
+        time.sleep(1)
+    
+    if not args.gtd:
+        gt_download(
+            broker = "gbm",
+            frequency = "1m",
+            verbose = False
+        )
         time.sleep(1)
 
     bot(
