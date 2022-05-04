@@ -104,7 +104,6 @@ def bot(args):
         fiat = "mx",
         commission=args.comission,
         end = args.end,
-        subdivision="sector",
         parallel = True
     )
 
@@ -117,7 +116,8 @@ def bot(args):
                 "time":252,
                 "function":func
             }
-        }
+        },
+        run = args.run
     )
 
     b.optimize(
@@ -146,6 +146,7 @@ if __name__ == "__main__":
     parser.add_argument( "--mev-download", "-m", dest = "md", action = "store_true", help = "Not Update MEVs DB" )
     parser.add_argument( "--stock-download", "-s", dest = "sd", action = "store_true", help = "Not Update Stocks DB" )
     parser.add_argument( "--gt-download", "-g", dest = "gtd", action = "store_true", help = "Not Update Google Trends DB" )
+    parser.add_argument( "--run-analysis", "-r", dest = "run", action = "store_false", help = "Not Run Analysis" )
 
     args = parser.parse_args()
 
@@ -159,7 +160,7 @@ if __name__ == "__main__":
 
     if not args.sd:
         historic_download(
-            broker="mevtaml",
+            broker="gbm",
             fiat = "mx",
             frequency="1m",
             verbose=False
