@@ -51,7 +51,7 @@ def dsfilter(asset):
 
     return (counter[False] > counter[True]) and (counter[False] > len( v ) // 2)
 
-GEN = 50
+GEN = 2
 
 class GTTATunning(TATunningProblem):
 
@@ -160,7 +160,7 @@ if __name__ == "__main__":
             "DSFilter":{
                 "type":"filter",
                 "frequency":"1w",
-                "time":300,
+                "time":150,
                 "function":dsfilter
             },
             "DE":{
