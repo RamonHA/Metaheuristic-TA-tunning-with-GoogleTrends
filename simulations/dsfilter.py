@@ -15,6 +15,8 @@ from trading.processes import Simulation
 from trading.metaheuristics.ta_tunning import TATunningProblem
 from trading.strategy import Strategy
 
+import sys
+sys.path.append("../")
 from functions import *
 
 from copy import copy
