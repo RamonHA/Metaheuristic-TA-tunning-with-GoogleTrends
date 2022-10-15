@@ -15,7 +15,7 @@ from trading.metaheuristics.ta_tunning import TATunningProblem
 from functions import *
 
 
-GEN = 35
+GEN = 40
 
 class GTTATunning(TATunningProblem):
 
@@ -100,6 +100,7 @@ def func(inst):
 def bot(args):
 
     b = Bot(
+        name = "GT-MEV",
         broker = "gbm",
         fiat = "mx",
         commission=args.comission,
