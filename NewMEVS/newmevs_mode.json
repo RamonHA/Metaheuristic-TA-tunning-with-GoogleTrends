@@ -1,0 +1,16 @@
+{
+    "petroleo": "yahoo", 
+    "er": "yahoo", 
+    "inflacion": "sie", 
+    "pib": "inegi", 
+    "cetes": "sie", 
+    "inpc": "sie", 
+    "reservas internacionales": "sie", 
+    "desempleo": "inegi", 
+    "s&p500": "yahoo", 
+    "sse": "yahoo", 
+    "nikkei": "yahoo", 
+    "tsx": "yahoo", 
+    "dax": "yahoo", 
+    "mexbol": "yahoo"
+}
