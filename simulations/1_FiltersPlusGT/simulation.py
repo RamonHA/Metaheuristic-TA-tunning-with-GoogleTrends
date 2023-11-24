@@ -155,7 +155,7 @@ if __name__ == "__main__":
                 "function":func
             }
         },
-        run = False
+        run = True
     )
 
     for bt in [12, 24, 48]:
